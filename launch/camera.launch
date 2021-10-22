@@ -1,0 +1,9 @@
+<launch>
+    <arg name="visualize" value="true"/>
+    <group ns="camera">
+        <node name="ROS_spinnaker" pkg="ROS_spinnaker" type="ROS_spinnaker.py" output="screen"/>
+        <node if="$(arg visualize)" name="input" pkg="image_view" type="image_view">
+	    	<remap from="image" to="flir" />
+        </node>
+    </group>
+</launch>
